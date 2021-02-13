@@ -16,4 +16,4 @@ For visualization purpose, I am computed the scale from the ground truth.
 
 ## Results
 
-![Results] (media/result)
+![Results] (vokoscreen-2021-02-13_12-49-07.mp4)
