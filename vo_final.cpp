@@ -17,17 +17,18 @@
  *************************/
 
  using namespace std;
+ using cv::TermCriteria;
  using cv::Mat;
  using cv::Point2f;
  using cv::KeyPoint;
  using cv::Size;
- using cv::TermCriteria;
+
 
 #define MAX_FRAME 2000
 #define MIN_NUM_FEAT 2000
 
-const static char* dataset_images_location = "/home/paurvi/Documents/vo_project/data_odometry_gray/dataset/sequences/02/image_0";
-const static char* dataset_poses_location = "/home/paurvi/Documents/vo_project/data_odometry_poses/dataset/poses/02.txt";
+const char* dataset_images_location = "/home/paurvi/Documents/vo_project/data_odometry_gray/dataset/sequences/02/image_0";
+const char* dataset_poses_location = "/home/paurvi/Documents/vo_project/data_odometry_poses/dataset/poses/02.txt";
 
 vector<Point2f> getGreyCamGroundPoses() {
   string line;
