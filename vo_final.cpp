@@ -2,11 +2,12 @@
 #include <algorithm>
 #include <iterator>
 #include <vector>
+
+#include <opencv2/opencv.hpp>
 #include <ctime>
 #include <sstream>
 #include <fstream>
 #include <string>
-#include <opencv2/opencv.hpp>
 
 /**
  **STEPS********
@@ -30,7 +31,7 @@
 const char* dataset_images_location = "/home/paurvi/Documents/vo_project/data_odometry_gray/dataset/sequences/02/image_0";
 const char* dataset_poses_location = "/home/paurvi/Documents/vo_project/data_odometry_poses/dataset/poses/02.txt";
 
-vector<Point2f> getGreyCamGroundPoses() {
+vector<Point2f> getGroundPoses() {
   string line;
   int i = 0;
   ifstream myfile (dataset_poses_location);
@@ -121,6 +122,8 @@ vector<double> getAbsoluteScales()	{
   bool nonmaxSupression = true;
 
   cv::FAST(img, keypoints, fast_threshold, nonmaxSupression);
+      cv::ORB_create();
+      cv::ORB(img,keypoints)
   KeyPoint::convert(keypoints, points, vector<int>());
  }
 
@@ -201,7 +204,7 @@ int main(int argc, char** argv) {
 
   Mat traj = Mat::zeros(600, 1241, CV_8UC3);
 
-  auto groundPoses = getGreyCamGroundPoses();
+  auto groundPoses = getGroundPoses();
   auto groundScales = getAbsoluteScales();
 
   for(int numFrame=2; numFrame < MAX_FRAME; numFrame++) {
